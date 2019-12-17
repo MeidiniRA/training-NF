@@ -17,7 +17,9 @@ class UserModel
 	//fungsi CRUD
 
 	public function getAll(){
-		$sql = "SELECT * FROM user";
+		$sql = "SELECT user.*, karyawan.nama AS fullname 
+				FROM user INNER JOIN karyawan 
+				ON karyawan.id = user.karyawan_id";
 
 		//prepare statement PDO
 		$ps= $this->koneksi->prepare($sql);
@@ -38,7 +40,7 @@ class UserModel
 	public function simpan($data){
 
 		//urutan insert mengikuti inputan pada form
-		$sql = "INSERT INTO user (username,password,level) VALUES (?,?,?";
+		$sql = "INSERT INTO user (username,password,level) VALUES (?,?,?)";
 
 		//prepare statement PDO
 		$ps= $this->koneksi->prepare($sql);

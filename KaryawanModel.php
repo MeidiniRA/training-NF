@@ -28,8 +28,10 @@ class KaryawanModel
 	}
 
 	public function view($id){
-		$sql = "SELECT karyawan.*, jabatan.nama AS posisi FROM karyawan INNER JOIN jabatan ON jabatan.id = karyawan.jabatan_id
-				WHERE karyawan.id=?";
+		$sql = "SELECT karyawan.*, jabatan.nama AS posisi, divisi.nama as departemen  FROM karyawan 
+		INNER JOIN jabatan ON jabatan.id = karyawan.jabatan_id
+		INNER JOIN divisi ON divisi.id = karyawan.divisi_id
+			WHERE karyawan.id=?";
 
 		//prepare statement PDO
 		$ps= $this->koneksi->prepare($sql);

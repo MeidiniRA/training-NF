@@ -1,5 +1,6 @@
 <?php
-
+$sesi = $_SESSION['MEMBER'];
+if(isset($sesi) && $sesi['level'] != 'Karyawan' ){
 $ar_judul = ['No','Nama','Action'];
 
 //ciptakan object dari class dari PegawaiModel 
@@ -73,3 +74,10 @@ $rs = $model->getAll();
     <?php  $no++; } ?>
   </tbody>
 </table>
+<?php
+// tutup dari syntax if(isset($_SESSION['MEMBER'])){
+}
+else{
+  include_once 'terlarang.php';
+}
+?>

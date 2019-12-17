@@ -1,4 +1,6 @@
 <?php
+$sesi = $_SESSION['MEMBER'];
+if(isset($sesi) && $sesi['level'] != 'Karyawan' ){
 
 $ar_judul = ['No','NIK','Nama','Jenis Kelamin','No. Hp','Status','Jabatan','',''];
 
@@ -83,3 +85,10 @@ $rs = $model->getAll();
     <?php  $no++; } ?>
   </tbody>
 </table>
+<?php
+// tutup dari syntax if(isset($_SESSION['MEMBER'])){
+}
+else{
+  include_once 'terlarang.php';
+}
+?>

@@ -1,5 +1,6 @@
 <?php
-
+$sesi = $_SESSION['MEMBER'];
+if(isset($sesi) && $sesi['level'] != 'Karyawan' ){
 $ar_judul = ['No','Nama','',''];
 
 //ciptakan object dari class dari JabatanModel 
@@ -64,17 +65,24 @@ $rs = $model->getAll();
       <th scope="row"><?=$no ?></th>
       <td><?=$jabatan['nama'] ?></td>
       
-      <td align="right">
-      	<a class="btn btn-warning btn-sm" href="index.php?hal=form_jabatan&id_edit=<?=$jabatan['id'] ?>">Ubah</a>
+      <td align = "right">
+        <a class="btn btn-warning btn-sm" href="index.php?hal=form_jabatan&idedit=<?=$jabatan['id'] ?>">Ubah</a>
       </td>
-      <td align="left">
-      	<form method = "POST" action = "controllerJabatan.php">
+      <td align="left" >
+        <form method ="POST" action ="controllerJabatan.php">
         <button class="btn btn-danger btn-sm" name="proses" value="hapus" onclick="return confirm('are you sure')">Hapus</button>
         <input type="hidden" name="idx" value="<?= $jabatan['id'] ?>" />
         </form>
-      </td>
+      </td> 
    
     </tr>
     <?php  $no++; } ?>
   </tbody>
 </table>
+<?php
+// tutup dari syntax if(isset($_SESSION['MEMBER'])){
+}
+else{
+  include_once 'terlarang.php';
+}
+?>

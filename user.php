@@ -1,6 +1,6 @@
 <?php
 
-$ar_judul = ['No','Username','Password','Level','Action'];
+$ar_judul = ['No','Username','Password','Level','',''];
 
 //ciptakan object dari class dari PegawaiModel 
 //fungsi - fungsi CRUD

@@ -2,14 +2,14 @@
 /**
 * 
 */
-class JabatanModel 
+class CutiModel 
 {
 	//member 1 variable / atribute
 	public $koneksi;
 	public function __construct()
 	{
 		//member 2 konstruktor
-		global $dbh; // panggil var di file lain
+		global $dbh; // panggir var di file lain
 		$this->koneksi = $dbh;
 	}
 
@@ -17,7 +17,7 @@ class JabatanModel
 	//fungsi CRUD
 
 	public function getAll(){
-		$sql = "SELECT * FROM jabatan";
+		$sql = "SELECT * FROM cuti ORDER BY id DESC";
 
 		//prepare statement PDO
 		$ps= $this->koneksi->prepare($sql);
@@ -26,19 +26,10 @@ class JabatanModel
 		return $rs;
 	}
 
-	public function view($id){
-		$sql = "SELECT * FROM jabatan WHERE id=?";
-
-		//prepare statement PDO
-		$ps= $this->koneksi->prepare($sql);
-		$ps->execute($id);
-		$rs=$ps->fetch(); // untuk memanggil satu baris
-		return $rs;
-	}
 	public function simpan($data){
 
 		//urutan insert mengikuti inputan pada form
-		$sql = "INSERT jabatan (nama) VALUES (?)";
+		$sql = "INSERT INTO cuti (id,karyawan_id,jenis_cuti_id,tgl_mulai,tgl_akhir,tgl_masuk,status,bukti,keterangan,sisa_cuti) VALUES (?,?,?,?,?,?,?,?,?)";
 
 		//prepare statement PDO
 		$ps= $this->koneksi->prepare($sql);
@@ -50,7 +41,7 @@ class JabatanModel
 	public function ubah($data){
 
 		//urutan insert mengikuti inputan pada form
-		$sql = "UPDATE jabatan SET nama=? WHERE id=?";
+		$sql = "UPDATE cuti SET id=?, karyawan_id=?, jenis_cuti_id=?, tgl_mulai=?, tgl_akhir=?, tgl_masuk=?, status=?, bukti=?, keterangan=?, sisa_cuti=?";
 
 		//prepare statement PDO
 		$ps= $this->koneksi->prepare($sql);
@@ -58,10 +49,11 @@ class JabatanModel
 		// untuk mengeksekusi data yang akan di simpan
 		$ps->execute($data);
 	}
+
 	public function hapus($id){
 
 		//urutan insert mengikuti inputan pada form
-		$sql = "DELETE FROM jabatan WHERE id=?";
+		$sql = "DELETE FROM cuti WHERE id=?";
 
 		//prepare statement PDO
 		$ps= $this->koneksi->prepare($sql);
@@ -69,5 +61,6 @@ class JabatanModel
 		// untuk mengeksekusi data yang akan di simpan
 		$ps->execute($id);
 	}
+
 
 }

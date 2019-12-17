@@ -1,35 +1,32 @@
 <?php
-
-
-//----------------Proses Ubah data-----------------
-$id_edit = $_REQUEST['id_edit'];
+//------------------------- Proses ubah data ----------------------------
+// tangkap request idedit di URL 
+$idedit = $_REQUEST['idedit'];
 $obj = new JabatanModel();
 if(!empty($idedit)){
   // modus edit data lama yang di tampilkan di form untuk di edit
-  $row = $obj->see([$id_edit]);
+  $row = $obj->view([$idedit]);
 }
 else{
 
  // modus entry data baru, form tetap dalam keadaan kosong
   $row = [];
 }
-
 ?>
-
-
 <form method="POST" action="controllerJabatan.php">
   <div class="form-group row">
-    <label for="jabatan" class="col-5 col-form-label">Jabatan</label> 
-    <div class="col-7">
-      <input id="jabatan" name="jabatan" placeholder="New Jabatan" type="text" class="form-control" required="required">
+    <label for="nama" class="col-4 col-form-label">Nama Jabatan</label> 
+    <div class="col-8">
+      <input id="nama" name="nama" value="<?=$row['nama']?>" type="text" required="required" class="form-control">
     </div>
-  </div> 
+  </div>
   <div class="form-group row">
   <?php
-    if(empty($id_edit)){ //modus entry data baru
-    ?>
-    <div class="offset-5 col-7">
-      <button name="submit" type="submit" class="btn btn-primary">Simpan</button>
+  if(empty($idedit)){ //modus entry data baru
+
+  ?>
+    <div class="offset-4 col-8">
+      <button name="proses" value="simpan" type="submit" class="btn btn-primary">Simpan</button>
       <?php
         }
         else{

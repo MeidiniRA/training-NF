@@ -1,24 +1,38 @@
 <?php
 include_once 'koneksi.php';
-include_once 'UserModel.php';
+include_once 'CutiModel.php';
 
 //tangkap request form nama nama yang ada di element form
-$username = $_POST ['username'];
-$password = $_POST ['password'];
-$level = $_POST ['level'];
+$nik = $_POST ['nik'];
+$jenis = $_POST ['jenis'];
+$awal = $_POST ['awal'];
+$akhir = $_POST ['akhir'];
+$masuk = $_POST ['masuk'];
+$status = $_POST ['status'];
+$bukti = $_POST ['bukti'];
+$ket = $_POST ['ket'];
+$sisa = $_POST ['sisa'];
 
 //gabungkan var di atas ke array
 $data = [
-	$username,
-	$password,
-	$level
+	$nik,
+	$jenis,
+	$awal,
+	$akhir,
+	$masuk,
+	$status,
+	$bukti,
+	$ket,
+	$sisa
 ];
 
 //panggil fungsi simpan di PegawaiModel.php
-
 $proses = $_POST['proses'];
-$model = new UserModel();
-$model->simpan($data);
+$model = new CutiModel();
+
+
+
+//panggil fungsi-fungsi CRUD di KaryawanModel.php
 switch ($proses) {
 	case 'simpan':
 		$model->simpan($data);
@@ -34,11 +48,11 @@ switch ($proses) {
 
 	default:
 		//dikembalikan ke dalam pegawai
-		header('location:index.php?hal=karyawan');
+		header('location:index.php?hal=cuti');
 }
 
 // landing page kehalaman pegawai
 
-header('location:index.php?hal=user');
+header('location:index.php?hal=cuti');
 
 ?>
