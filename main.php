@@ -1,5 +1,4 @@
-<div class="col-md-9">
-
+<div class="col-md-12">
 <?php
 //tangkap request di url (dari klik menu)
 
@@ -15,6 +14,5 @@ if(!empty($hal)){
 }
 
 ?>
-			
 </div>
 </div>

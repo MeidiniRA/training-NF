@@ -1,6 +1,6 @@
 <?php
 /* Connect to a MySQL database using driver invocation */
-$dsn = 'mysql:dbname=techmuda3;host=localhost';
+$dsn = 'mysql:dbname=dbcuti;host=localhost';
 $user = 'root';
 $password = '';
 

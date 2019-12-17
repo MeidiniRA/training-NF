@@ -4614,8 +4614,8 @@ tbody.collapse.show {
 }
 
 .card-img-top {
-  border-top-right-radius: calc(0.1rem - 0px);
-  border-top-left-radius: calc(0.1rem - 0px);
+  border-top-right-radius: calc(0.25rem - 1px);
+  border-top-left-radius: calc(0.25rem - 1px);
 }
 
 .card-img-bottom {

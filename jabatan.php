@@ -1,7 +1,6 @@
-
 <?php
 
-$ar_judul = ['No','Nama','Action'];
+$ar_judul = ['No','Nama','',''];
 
 //ciptakan object dari class dari JabatanModel 
 //fungsi - fungsi CRUD
@@ -43,15 +42,14 @@ $rs = $model->getAll();
 
 
 <!-- ---------------------- akhir modal---------------------- -->
-
 <table class="table thead-dark">
   <thead>
     <tr>
     <?php
-    foreach ($ar_judul as $jdl) {
+    foreach ($ar_judul as $judul) {
     // menampilkan headline pada tabel
     ?>
-      <th scope="col"><?= $jdl?></th>
+      <th scope="col"><?= $judul?></th>
      <?php } ?>
 
     </tr>
@@ -59,15 +57,21 @@ $rs = $model->getAll();
   <tbody>
   <?php 
   $no=1;
-  foreach ($rs as $jab) {
+  foreach ($rs as $jabatan) {
   	?>
     <tr>
 
       <th scope="row"><?=$no ?></th>
-      <td><?=$jab['nama'] ?></td>
-      <td>
-      	<a class="btn btn-warning btn-sm" href="#">Ubah</a>
-      	<a class="btn btn-danger btn-sm" href="#" onclick="return confirm('are you sure')">Hapus</a>
+      <td><?=$jabatan['nama'] ?></td>
+      
+      <td align="right">
+      	<a class="btn btn-warning btn-sm" href="index.php?hal=form_jabatan&id_edit=<?=$jabatan['id'] ?>">Ubah</a>
+      </td>
+      <td align="left">
+      	<form method = "POST" action = "controllerJabatan.php">
+        <button class="btn btn-danger btn-sm" name="proses" value="hapus" onclick="return confirm('are you sure')">Hapus</button>
+        <input type="hidden" name="idx" value="<?= $jabatan['id'] ?>" />
+        </form>
       </td>
    
     </tr>

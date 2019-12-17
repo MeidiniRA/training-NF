@@ -1,9 +1,9 @@
-<div class="jumbotron card card-block">
+<div align="center" class="jumbotron card card-block">
 				<h2>
-					Welcome to Techmuda 3 Apps
+					Hello ! Welcome to Web Ketidakhadiran Karyawan
 				</h2>
 				<p>
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+					PT. Start Up Mandiri
 				</p>
 				<p>
 					<a class="btn btn-primary btn-large" href="#">Selengkapnya</a>
